@@ -1,0 +1,1073 @@
+/* ================================================
+   LIGHT MODE VARIABLES & GLASSMORPHISM
+   ================================================ */
+:root,
+[data-theme="light"] {
+  --bg-main:          #f8fafc;
+  --bg-section:       #ffffff;
+  --bg-card:          #ffffff;
+  --bg-input:         #ffffff;
+  --bg-navbar:        rgba(255, 255, 255, 0.85);
+  --bg-footer:        #0f172a;
+
+  --text-main:        #0f172a;
+  --text-muted:       #475569;
+  --text-inverse:     #ffffff;
+
+  --border-color:     rgba(226, 232, 240, 0.8);
+  --border-glass:     rgba(255, 255, 255, 0.4);
+  
+  --shadow-card:      0 8px 32px rgba(31, 38, 135, 0.07);
+  --shadow-hover:     0 12px 40px rgba(31, 38, 135, 0.12);
+  --glass-blur:       blur(12px);
+
+  --primary:          #7c3aed;
+  --primary-hover:    #6d28d9;
+  --primary-gradient: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+  --accent-cyan:      #06b6d4;
+  --accent-orange:    #f97316;
+  --accent-violet:    #8b5cf6;
+
+  /* Compatibility mappings */
+  --bg-primary:       var(--bg-main);
+  --bg-secondary:     var(--bg-section);
+  --bg-hover:         #f1f5f9;
+  --bg-active:        #e2e8f0;
+  --text-primary:     var(--text-main);
+  --text-secondary:   var(--text-muted);
+  --border-light:     var(--border-color);
+  --accent-primary:   var(--primary);
+  --accent-hover:     var(--primary-hover);
+  --success:          #22c55e;
+  --warning:          #f59e0b;
+  --error:            #ef4444;
+  --navbar-bg:        var(--bg-navbar);
+  --sidebar-bg:       var(--bg-sidebar);
+  --shadow:           var(--shadow-sm);
+  --shadow-sm:        0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; }
+body{
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+  background-attachment: fixed;
+  color:var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+a{text-decoration:none}
+button{cursor:pointer;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1)}
+button:hover{transform:translateY(-2px)}
+
+/* ================================================
+   DARK THEME OVERRIDES — START
+   Light mode styles above this line are untouched
+   ================================================ */
+
+:root[data-theme="dark"],
+:root.dark,
+html[data-theme="dark"],
+[data-theme="dark"] {
+  --bg-main:          #0b1120;      /* deepest background — page level    */
+  --bg-section:       #111827;      /* section backgrounds                 */
+  --bg-card:          #1e293b;      /* all cards, panels, containers       */
+  --bg-input:         #111827;      /* input fields, textareas, selects    */
+  --bg-navbar:        #0f172a;      /* navbar — slightly lighter than page */
+  --bg-footer:        #020617;      /* footer — darkest surface            */
+  --bg-hover:         #263348;      /* hover state on interactive items    */
+  --bg-active:        #2d3f55;      /* active/selected sidebar items       */
+  --bg-overlay:       rgba(0, 0, 0, 0.6);
+
+  --text-main:        #f8fafc;      /* primary readable text               */
+  --text-muted:       #94a3b8;      /* secondary/description text          */
+  --text-placeholder: #64748b;      /* input placeholder text              */
+  --text-inverse:     #0f172a;      /* text on accent color backgrounds    */
+
+  --border-color:     rgba(148, 163, 184, 0.18);  /* very subtle borders  */
+  --border-light:     rgba(148, 163, 184, 0.10);  /* very subtle borders  */
+  --border-focus:     rgba(124, 58, 237, 0.5);    /* focus ring           */
+
+  --shadow-sm:        0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md:        0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg:        0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-card:      0 8px 30px rgba(0, 0, 0, 0.25);
+  --shadow-hover:     0 16px 40px rgba(0, 0, 0, 0.35);
+  --shadow-glow:      0 0 20px rgba(124, 58, 237, 0.15);
+
+  --primary:          #7c3aed;      /* purple — same as light mode         */
+  --primary-hover:    #6d28d9;
+  --success:          #4ade80;
+  --warning:          #fbbf24;
+  --error:            #f87171;
+
+  /* Compatibility mappings for previously replaced color variables in individual stylesheets */
+  --bg-primary:       var(--bg-main);
+  --bg-secondary:     var(--bg-section);
+  --text-primary:     var(--text-main);
+  --text-secondary:   var(--text-muted);
+  --accent-primary:   var(--primary);
+  --accent-hover:     var(--primary-hover);
+  --navbar-bg:        var(--bg-navbar);
+  --sidebar-bg:       var(--bg-section);
+  --shadow:           var(--shadow-card);
+}
+
+/* ===================================================
+   GLOBAL BASE LAYOUT THEME OVERRIDES
+   =================================================== */
+[data-theme="dark"] body,
+[data-theme="dark"] #root,
+[data-theme="dark"] .app,
+[data-theme="dark"] .app-wrapper,
+[data-theme="dark"] main,
+[data-theme="dark"] .main-content,
+[data-theme="dark"] section,
+[data-theme="dark"] .profile-page-wrapper,
+[data-theme="dark"] .courses-page,
+[data-theme="dark"] .course-details-page,
+[data-theme="dark"] .events-page,
+[data-theme="dark"] .events-workspace,
+[data-theme="dark"] .course-player,
+[data-theme="dark"] .player-container,
+[data-theme="dark"] .player-content-area,
+[data-theme="dark"] .content-workspace,
+[data-theme="dark"] .lernx-app,
+[data-theme="dark"] .admin-dashboard-container {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] li,
+[data-theme="dark"] label,
+[data-theme="dark"] small,
+[data-theme="dark"] time {
+  color: var(--text-muted) !important;
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition: background-color 0.2s ease,
+              color 0.15s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+/* ===================================================
+   NAVBAR THEME & VERTICAL CENTERING
+   =================================================== */
+[data-theme="dark"] nav,
+[data-theme="dark"] .navbar,
+[data-theme="dark"] header.navbar,
+[data-theme="dark"] .lernx-navbar,
+[data-theme="dark"] .navbar-container {
+  background-color: var(--navbar-bg) !important;
+  background: var(--navbar-bg) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .navbar .logo,
+[data-theme="dark"] .navbar .brand,
+[data-theme="dark"] .navbar-logo,
+[data-theme="dark"] .logo-text,
+[data-theme="dark"] .logo-text * {
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .nav-link,
+[data-theme="dark"] .nav-deck-link-item {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-deck-link-item:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-theme="dark"] .nav-link.active-link,
+[data-theme="dark"] .nav-deck-link-item.active-tab-node,
+[data-theme="dark"] .nav-link.active,
+[data-theme="dark"] .nav-deck-link-item.active {
+  color: var(--primary) !important;
+  background-color: rgba(124, 58, 237, 0.1) !important;
+  font-weight: 600 !important;
+}
+
+/* Strictly Center All Items Vertically in Navbar */
+[data-theme="dark"] .navbar-right-utility-hub,
+[data-theme="dark"] .navbar-profile-action-group,
+[data-theme="dark"] .user-profile-menu,
+[data-theme="dark"] .auth-buttons,
+[data-theme="dark"] .guest-menu,
+[data-theme="dark"] .navbar-right,
+[data-theme="dark"] [class*="nav-right"],
+[data-theme="dark"] [class*="navbar-actions"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 16px !important;
+  height: 100% !important;
+}
+
+[data-theme="dark"] .navbar-avatar-trigger-link,
+[data-theme="dark"] .profile-icon-btn,
+[data-theme="dark"] .profile-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+[data-theme="dark"] .avatar-vector-icon,
+[data-theme="dark"] .avatar-svg {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .navbar-avatar-trigger-link:hover .avatar-vector-icon,
+[data-theme="dark"] .profile-icon-btn:hover .avatar-svg {
+  color: var(--primary) !important;
+}
+
+[data-theme="dark"] .avatar-label-txt-fallback {
+  color: var(--text-main) !important;
+  line-height: 1 !important;
+}
+
+/* Logout button style to match premium dark UI */
+[data-theme="dark"] .btn-logout,
+[data-theme="dark"] .navbar-action-cta-logout-btn {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-muted) !important;
+  border-radius: 6px !important;
+  padding: 0 16px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  transition: all 0.15s ease !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+[data-theme="dark"] .btn-logout:hover,
+[data-theme="dark"] .navbar-action-cta-logout-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  color: #ef4444 !important;
+}
+
+/* ===================================================
+   HOME PAGE THEME REBUILD
+   =================================================== */
+[data-theme="dark"] .hero,
+[data-theme="dark"] [class*="hero"],
+[data-theme="dark"] [class*="Hero"] {
+  background: linear-gradient(135deg, #111827, #1e1b4b) !important;
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .departments-section,
+[data-theme="dark"] [class*="departments"],
+[data-theme="dark"] [class*="Departments"] {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+}
+
+[data-theme="dark"] .department-card,
+[data-theme="dark"] [class*="department-card"],
+[data-theme="dark"] [class*="DepartmentCard"] {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+[data-theme="dark"] .department-card:hover,
+[data-theme="dark"] [class*="department-card"]:hover {
+  box-shadow: var(--shadow-hover) !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+[data-theme="dark"] .department-card h3,
+[data-theme="dark"] .department-card h4,
+[data-theme="dark"] [class*="department-card"] h3,
+[data-theme="dark"] [class*="department-card"] h4 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .department-card p,
+[data-theme="dark"] [class*="department-card"] p {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .department-card img,
+[data-theme="dark"] [class*="department-card"] img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Footer style */
+[data-theme="dark"] footer,
+[data-theme="dark"] .footer,
+[data-theme="dark"] .lernx-footer {
+  background-color: #020617 !important;
+  background: #020617 !important;
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] footer .footer-column,
+[data-theme="dark"] footer [class*="column"],
+[data-theme="dark"] footer [class*="Column"],
+[data-theme="dark"] footer .footer-card {
+  background-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] footer h4,
+[data-theme="dark"] footer h5,
+[data-theme="dark"] footer .footer-brand-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] footer a,
+[data-theme="dark"] footer p,
+[data-theme="dark"] footer span {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] footer a:hover {
+  color: var(--primary) !important;
+}
+
+/* ===================================================
+   COURSES PAGE THEME REBUILD
+   =================================================== */
+[data-theme="dark"] .courses-page,
+[data-theme="dark"] [class*="courses-page"],
+[data-theme="dark"] [class*="CoursesPage"],
+[data-theme="dark"] [class*="explore-page"],
+[data-theme="dark"] [class*="ExplorePage"] {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+}
+
+[data-theme="dark"] .category-header,
+[data-theme="dark"] [class*="category-header"],
+[data-theme="dark"] [class*="CategoryHeader"],
+[data-theme="dark"] .page-header {
+  background: linear-gradient(135deg, #4c1d95, #7c3aed) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .category-header h1,
+[data-theme="dark"] .category-header p,
+[data-theme="dark"] [class*="category-header"] h1,
+[data-theme="dark"] [class*="category-header"] p {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .course-card,
+[data-theme="dark"] [class*="course-card"],
+[data-theme="dark"] [class*="CourseCard"],
+[data-theme="dark"] .track-card,
+[data-theme="dark"] [class*="track-card"],
+[data-theme="dark"] [class*="TrackCard"],
+[data-theme="dark"] .domain-card,
+[data-theme="dark"] [class*="domain-card"],
+[data-theme="dark"] [class*="DomainCard"],
+[data-theme="dark"] .category-card,
+[data-theme="dark"] [class*="category-card"],
+[data-theme="dark"] [class*="CategoryCard"] {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-card) !important;
+  border-radius: 16px !important;
+}
+
+[data-theme="dark"] .course-card:hover,
+[data-theme="dark"] [class*="course-card"]:hover,
+[data-theme="dark"] [class*="CourseCard"]:hover,
+[data-theme="dark"] .track-card:hover,
+[data-theme="dark"] [class*="track-card"]:hover,
+[data-theme="dark"] [class*="TrackCard"]:hover {
+  box-shadow: var(--shadow-hover) !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+[data-theme="dark"] .course-card h3,
+[data-theme="dark"] .course-card h4,
+[data-theme="dark"] [class*="course-card"] h3,
+[data-theme="dark"] [class*="course-card"] h4,
+[data-theme="dark"] [class*="CourseCard"] h3,
+[data-theme="dark"] [class*="CourseCard"] h4,
+[data-theme="dark"] .track-card h3,
+[data-theme="dark"] [class*="track-card"] h3,
+[data-theme="dark"] [class*="TrackCard"] h3,
+[data-theme="dark"] .domain-card h3,
+[data-theme="dark"] [class*="domain-card"] h3,
+[data-theme="dark"] [class*="DomainCard"] h3,
+[data-theme="dark"] .category-card h3,
+[data-theme="dark"] [class*="category-card"] h3,
+[data-theme="dark"] [class*="CategoryCard"] h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .course-card p,
+[data-theme="dark"] [class*="course-card"] p,
+[data-theme="dark"] [class*="CourseCard"] p,
+[data-theme="dark"] .course-card span,
+[data-theme="dark"] [class*="course-card"] span,
+[data-theme="dark"] [class*="CourseCard"] span,
+[data-theme="dark"] .track-card p,
+[data-theme="dark"] [class*="track-card"] p,
+[data-theme="dark"] [class*="TrackCard"] p,
+[data-theme="dark"] .domain-card p,
+[data-theme="dark"] [class*="domain-card"] p,
+[data-theme="dark"] [class*="DomainCard"] p {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .explore-link,
+[data-theme="dark"] [class*="explore-link"],
+[data-theme="dark"] [class*="path-link"] {
+  color: var(--primary) !important;
+}
+
+[data-theme="dark"] .course-card button,
+[data-theme="dark"] [class*="course-card"] button,
+[data-theme="dark"] [class*="enroll-btn"],
+[data-theme="dark"] .track-card button,
+[data-theme="dark"] [class*="track-card"] button {
+  background-color: var(--primary) !important;
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="dark"] .course-card button:hover,
+[data-theme="dark"] [class*="course-card"] button:hover,
+[data-theme="dark"] .track-card button:hover {
+  background-color: #6d28d9 !important;
+  background: #6d28d9 !important;
+}
+
+[data-theme="dark"] .course-card img,
+[data-theme="dark"] [class*="course-card"] img,
+[data-theme="dark"] [class*="CourseCard"] img,
+[data-theme="dark"] .track-card img,
+[data-theme="dark"] [class*="track-card"] img,
+[data-theme="dark"] [class*="TrackCard"] img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+[data-theme="dark"] [class*="progress-bar"],
+[data-theme="dark"] [class*="ProgressBar"] {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+}
+
+/* ===================================================
+   COURSE DESCRIPTION (DETAILS) PAGE THEME REBUILD
+   =================================================== */
+[data-theme="dark"] .course-details-page {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .course-details-page .rounded-card {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+[data-theme="dark"] .course-details-page .rounded-card h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .course-details-page .description-text,
+[data-theme="dark"] .course-details-page .section-intro,
+[data-theme="dark"] .course-details-page .pre-enroll-note,
+[data-theme="dark"] .course-details-page .progress-labels,
+[data-theme="dark"] .course-details-page .syllabus-info-note {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .course-details-page .desc-specs-grid {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+}
+
+[data-theme="dark"] .course-details-page .spec-icon {
+  background: var(--bg-card) !important;
+  background-color: var(--bg-card) !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .course-details-page .spec-label {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .course-details-page .spec-value {
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .course-details-page .syllabus-module-item {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .course-details-page .module-index-header {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .course-details-page .mod-idx-name {
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .course-details-page .submodule-preview-item {
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .course-details-page .btn-download-cert {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .course-details-page .btn-download-cert:hover {
+  background-color: var(--bg-hover) !important;
+}
+
+/* ===================================================
+   EVENTS PAGE THEME REBUILD
+   =================================================== */
+[data-theme="dark"] .events-page,
+[data-theme="dark"] [class*="events-page"],
+[data-theme="dark"] [class*="EventsPage"],
+[data-theme="dark"] .events-workspace,
+[data-theme="dark"] .events-layout-container,
+[data-theme="dark"] .all-events-section,
+[data-theme="dark"] .my-events-sidebar {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+}
+
+[data-theme="dark"] .events-page h1,
+[data-theme="dark"] .events-page h2,
+[data-theme="dark"] .events-page h3,
+[data-theme="dark"] .events-workspace h1,
+[data-theme="dark"] .events-workspace h2,
+[data-theme="dark"] .events-workspace h3,
+[data-theme="dark"] .all-events-section h2,
+[data-theme="dark"] .my-events-card h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .events-page p,
+[data-theme="dark"] .events-workspace p,
+[data-theme="dark"] .sidebar-empty-note {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .event-card,
+[data-theme="dark"] [class*="event-card"],
+[data-theme="dark"] [class*="EventCard"],
+[data-theme="dark"] .event-workspace-card,
+[data-theme="dark"] .my-events-card,
+[data-theme="dark"] .reserved-events-container,
+[data-theme="dark"] [class*="reserved"],
+[data-theme="dark"] [class*="Reserved"],
+[data-theme="dark"] [class*="my-events"],
+[data-theme="dark"] [class*="MyEvents"] {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-card) !important;
+  border-radius: 16px !important;
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .event-card-body h3,
+[data-theme="dark"] .event-card h3,
+[data-theme="dark"] [class*="event-card"] h3,
+[data-theme="dark"] .event-card h4,
+[data-theme="dark"] [class*="EventCard"] h3,
+[data-theme="dark"] [class*="EventCard"] h4 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .event-card p,
+[data-theme="dark"] [class*="event-card"] p,
+[data-theme="dark"] .event-card span,
+[data-theme="dark"] [class*="EventCard"] p,
+[data-theme="dark"] [class*="EventCard"] span,
+[data-theme="dark"] .event-card-body span,
+[data-theme="dark"] .evt-details-info,
+[data-theme="dark"] .evt-desc,
+[data-theme="dark"] .evt-desc-excerpt {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .event-card-footer {
+  border-top: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .my-event-list-item {
+  border-bottom: 1px dashed var(--border-color) !important;
+}
+
+[data-theme="dark"] .my-event-list-item .item-title {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .my-event-list-item .item-meta {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .event-card button,
+[data-theme="dark"] [class*="event-card"] button,
+[data-theme="dark"] [class*="register-btn"],
+[data-theme="dark"] .btn-event-register {
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="dark"] .event-card button:hover,
+[data-theme="dark"] [class*="register-btn"]:hover,
+[data-theme="dark"] .btn-event-register:hover {
+  background: #6d28d9 !important;
+  background-color: #6d28d9 !important;
+}
+
+[data-theme="dark"] .event-card img,
+[data-theme="dark"] [class*="event-card"] img,
+[data-theme="dark"] [class*="EventCard"] img,
+[data-theme="dark"] .evt-banner-img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Home Carousel Events */
+[data-theme="dark"] .home-events-section {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .home-events-left h2 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .home-events-left p {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .carousel-card-inner {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+[data-theme="dark"] .carousel-card-body h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .evt-meta-row {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .carousel-card-footer {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  border-top: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .carousel-arrow {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .carousel-arrow:hover {
+  background: var(--primary) !important;
+  color: white !important;
+  border-color: var(--primary) !important;
+}
+
+[data-theme="dark"] .popup-form {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+[data-theme="dark"] .popup-form h2 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .popup-form .close-btn {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .popup-form .close-btn:hover {
+  background-color: var(--bg-hover) !important;
+  color: #ffffff !important;
+}
+
+/* ===================================================
+   PROFILE PAGE THEME REBUILD
+   =================================================== */
+[data-theme="dark"] .profile-page,
+[data-theme="dark"] [class*="profile-page"],
+[data-theme="dark"] .profile-page-wrapper {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+}
+
+[data-theme="dark"] .profile-card,
+[data-theme="dark"] [class*="profile-card"],
+[data-theme="dark"] [class*="ProfileCard"],
+[data-theme="dark"] .password-card,
+[data-theme="dark"] [class*="password-card"],
+[data-theme="dark"] [class*="PasswordCard"],
+[data-theme="dark"] .profile-section-card,
+[data-theme="dark"] [class*="pathway"],
+[data-theme="dark"] [class*="Pathway"],
+[data-theme="dark"] [class*="enrolled"],
+[data-theme="dark"] [class*="Enrolled"],
+[data-theme="dark"] .user-details-card,
+[data-theme="dark"] .credentials-card,
+[data-theme="dark"] .profile-enrollment-row,
+[data-theme="dark"] .profile-event-row,
+[data-theme="dark"] .certificate-badge-card {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-card) !important;
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .profile-page h2,
+[data-theme="dark"] .profile-page h3,
+[data-theme="dark"] [class*="profile-card"] h3,
+[data-theme="dark"] [class*="password-card"] h3,
+[data-theme="dark"] .profile-section-card h3,
+[data-theme="dark"] .user-details-card h2,
+[data-theme="dark"] .credentials-card h3,
+[data-theme="dark"] .row-info-col h4,
+[data-theme="dark"] .evt-row-main h4,
+[data-theme="dark"] .certificate-badge-card h4 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .profile-page p,
+[data-theme="dark"] .profile-page span,
+[data-theme="dark"] .profile-page label,
+[data-theme="dark"] .user-email,
+[data-theme="dark"] .row-meta,
+[data-theme="dark"] .evt-row-meta,
+[data-theme="dark"] .cert-meta-txt {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .profile-page input,
+[data-theme="dark"] .profile-page textarea,
+[data-theme="dark"] .profile-page select,
+[data-theme="dark"] .profile-page-wrapper input,
+[data-theme="dark"] .profile-page-wrapper textarea {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+}
+
+[data-theme="dark"] .profile-page input:focus,
+[data-theme="dark"] .profile-page-wrapper input:focus,
+[data-theme="dark"] .profile-page textarea:focus,
+[data-theme="dark"] .profile-page-wrapper textarea:focus {
+  border-color: var(--primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25) !important;
+}
+
+[data-theme="dark"] [class*="continue-btn"],
+[data-theme="dark"] [class*="ContinueBtn"],
+[data-theme="dark"] .btn-row-action,
+[data-theme="dark"] .btn-update-pwd,
+[data-theme="dark"] .btn-browse-courses {
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+[data-theme="dark"] [class*="continue-btn"]:hover,
+[data-theme="dark"] .btn-row-action:hover,
+[data-theme="dark"] .btn-update-pwd:hover,
+[data-theme="dark"] .btn-browse-courses:hover {
+  background: #6d28d9 !important;
+  background-color: #6d28d9 !important;
+}
+
+[data-theme="dark"] .user-role-badge {
+  background-color: rgba(124, 58, 237, 0.2) !important;
+  color: var(--primary) !important;
+  border: 1px solid rgba(124, 58, 237, 0.3) !important;
+}
+
+[data-theme="dark"] .theme-toggle-btn {
+  background-color: var(--bg-section) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="dark"] .progress-value-label {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .progress-bar-container {
+  background-color: #334155 !important;
+  background: #334155 !important;
+}
+
+[data-theme="dark"] .progress-bar-fill {
+  background: #7c3aed !important;
+  background-color: #7c3aed !important;
+}
+
+/* ===================================================
+   COURSE PLAYER THEME REBUILD
+   =================================================== */
+[data-theme="dark"] .course-player,
+[data-theme="dark"] [class*="course-player"],
+[data-theme="dark"] [class*="PlayerPage"],
+[data-theme="dark"] .player-container {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+}
+
+[data-theme="dark"] .player-sidebar,
+[data-theme="dark"] [class*="player-sidebar"],
+[data-theme="dark"] .lms-sidebar,
+[data-theme="dark"] [class*="course-sidebar"] {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .player-content-area,
+[data-theme="dark"] .content-workspace,
+[data-theme="dark"] [class*="player-content"],
+[data-theme="dark"] [class*="content-panel"] {
+  background-color: var(--bg-main) !important;
+  background: var(--bg-main) !important;
+}
+
+[data-theme="dark"] .sidebar-header,
+[data-theme="dark"] [class*="sidebar-header"] {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .submodule-item-row,
+[data-theme="dark"] [class*="sidebar-item"],
+[data-theme="dark"] [class*="lesson-item"] {
+  color: var(--text-muted) !important;
+  background-color: transparent !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="dark"] .submodule-item-row:hover,
+[data-theme="dark"] [class*="sidebar-item"]:hover {
+  background-color: var(--bg-hover) !important;
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .submodule-item-row.active,
+[data-theme="dark"] [class*="sidebar-item"].active,
+[data-theme="dark"] [class*="sidebar-item"][class*="active"] {
+  background-color: var(--bg-active) !important;
+  background: var(--bg-active) !important;
+  color: #ffffff !important;
+  border-left: 3px solid var(--primary) !important;
+}
+
+[data-theme="dark"] .submodule-item-row.completed,
+[data-theme="dark"] [class*="sidebar-item"].completed {
+  color: #22c55e !important;
+}
+
+[data-theme="dark"] .submodule-content-card,
+[data-theme="dark"] .viewer-card,
+[data-theme="dark"] .quiz-card,
+[data-theme="dark"] [class*="quiz-card"],
+[data-theme="dark"] [class*="quiz-container"],
+[data-theme="dark"] [class*="assignment"],
+[data-theme="dark"] [class*="Assignment"] {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-card) !important;
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .quiz-option,
+[data-theme="dark"] [class*="quiz-option"],
+[data-theme="dark"] [class*="answer-option"] {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-main) !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="dark"] .quiz-option:hover,
+[data-theme="dark"] [class*="quiz-option"]:hover {
+  background-color: var(--bg-hover) !important;
+  background: var(--bg-hover) !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+}
+
+[data-theme="dark"] .quiz-option.selected,
+[data-theme="dark"] [class*="quiz-option"].selected {
+  background-color: rgba(124, 58, 237, 0.2) !important;
+  background: rgba(124, 58, 237, 0.2) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .quiz-card h2,
+[data-theme="dark"] .quiz-card h3,
+[data-theme="dark"] .quiz-card h4 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .quiz-card p,
+[data-theme="dark"] .quiz-card span {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] [class*="assignment"] textarea,
+[data-theme="dark"] [class*="submission"] textarea,
+[data-theme="dark"] [class*="submission"] input {
+  background-color: var(--bg-section) !important;
+  background: var(--bg-section) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+}
+
+/* ===================================================
+   CERTIFICATES & GENERIC OVERRIDES
+   =================================================== */
+[data-theme="dark"] .certificate-card,
+[data-theme="dark"] .certificate-container,
+[data-theme="dark"] .cert-outer-border {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  border: 2px solid var(--border-color) !important;
+  color: #ffffff !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .certificate-title,
+[data-theme="dark"] .cert-student-name,
+[data-theme="dark"] .cert-title {
+  color: #ffffff !important;
+}
+
+/* Scrollbar styling for dark mode */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Inline style override helpers */
+[data-theme="dark"] [style*="background: white"],
+[data-theme="dark"] [style*="background: #ffffff"],
+[data-theme="dark"] [style*="background: #fff"],
+[data-theme="dark"] [style*="background-color: white"],
+[data-theme="dark"] [style*="background-color: #ffffff"],
+[data-theme="dark"] [style*="background-color: #fff"] {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+}
+
+[data-theme="dark"] [style*="color: black"],
+[data-theme="dark"] [style*="color: #000000"],
+[data-theme="dark"] [style*="color: #000"] {
+  color: var(--text-main) !important;
+}
+
+/* ================================================
+   DARK THEME OVERRIDES — END
+   ================================================ */

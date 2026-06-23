@@ -1,0 +1,126 @@
+.user-login-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-main);
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+/* CLEAN PREMIUM CARD CONFIGURATION */
+.user-login-form {
+  width: 100%;
+  max-width: 450px;
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  animation: cardAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cardAppear {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* TEXT TYPOGRAPHY HEADER */
+.user-login-form h1 {
+  text-align: center;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.03em;
+}
+
+/* Added a small helper subtitle tag wrapper layout to balance the design */
+.user-login-form::before {
+  content: "Sign in to access your platform console dashboard";
+  display: block;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+/* TEXT AREA INPUTS fields */
+.user-login-form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-main);
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.user-login-form input::placeholder {
+  color: #94a3b8;
+}
+
+.user-login-form input:hover {
+  border-color: #94a3b8;
+}
+
+.user-login-form input:focus {
+  border-color: #7c3aed;
+  background: var(--bg-primary);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12); /* Modern focus halo ring */
+}
+
+/* THE PRIMARY SUBMIT BUTTON BUTTON */
+.user-login-form button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
+.user-login-form button:hover {
+  background: #6d28d9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.25);
+}
+
+.user-login-form button:active {
+  transform: translateY(0);
+}
+
+/* RESPONSIVE LAYOUT DECK */
+@media(max-width: 480px){
+  .user-login-form {
+    padding: 32px 24px;
+    border-radius: 12px;
+  }
+
+  .user-login-form h1 {
+    font-size: 24px;
+  }
+}

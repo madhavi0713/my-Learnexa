@@ -1,0 +1,347 @@
+.courses-page-container {
+  width: 100%;
+  min-height: calc(100vh - 4.5rem);
+  background-color: var(--bg-main);
+  padding-bottom: 4rem;
+}
+
+.courses-header-section {
+  background-color: transparent;
+  color: var(--text-main);
+  padding: 3.5rem 1.5rem 2rem 1.5rem;
+  text-align: center;
+}
+
+.courses-header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.navigation-controls {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.courses-breadcrumb {
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  color: #c7d2fe;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-hierarchy-back {
+  background: var(--bg-section);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-hierarchy-back:hover {
+  background: var(--bg-hover);
+  transform: translateX(-2px);
+}
+
+.courses-section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 850;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
+  position: relative;
+  display: inline-block;
+}
+
+.courses-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background-color: #4f46e5;
+  border-radius: 2px;
+}
+
+.courses-section-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin: 0 auto;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+.courses-main-viewport {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Spinner & Status views */
+.viewport-loading-state,
+.viewport-error-state,
+.viewport-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  text-align: center;
+  background: var(--bg-primary);
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.lms-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f4f6;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.viewport-loading-state p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.error-icon, .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.viewport-error-state h3, .viewport-empty-state h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 750;
+  margin: 0 0 0.5rem 0;
+  color: #0f172a;
+}
+
+.viewport-error-state p, .viewport-empty-state p {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0 0 1.5rem 0;
+  max-width: 400px;
+}
+
+.btn-lms-retry {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-lms-retry:hover {
+  background-color: #4f46e5;
+  transform: translateY(-1px);
+}
+
+/* Hierarchy Cards Grid — horizontal row layout */
+.hierarchy-cards-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Each card takes equal width, min 280px, in a row */
+.hierarchy-item-card {
+  flex: 1 1 280px;
+  min-width: 280px;
+  max-width: 100%;
+}
+
+.hierarchy-item-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  /* height: 100% handled by flex-grow below */
+}
+
+.hierarchy-item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.2);
+  border-color: #a5b4fc;
+}
+
+.hierarchy-card-banner {
+  height: 145px;
+  width: 100%;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 1.75rem;
+  border-bottom: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Per-card gradient variants */
+.dept-card-0 .hierarchy-card-banner {
+  background: linear-gradient(135deg, #4f46e5 0%, #6d28d9 60%, #7c3aed 100%);
+}
+.dept-card-1 .hierarchy-card-banner {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+}
+.dept-card-2 .hierarchy-card-banner {
+  background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%);
+}
+.dept-card-3 .hierarchy-card-banner {
+  background: linear-gradient(135deg, #10b981 0%, #0ea5e9 50%, #6366f1 100%);
+}
+
+.hierarchy-card-banner-glow {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+.hierarchy-card-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+  backdrop-filter: blur(4px);
+  flex-shrink: 0;
+}
+
+.hierarchy-item-card:hover .hierarchy-card-icon-wrapper {
+  transform: scale(1.12) rotate(-5deg);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.hierarchy-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background: #ffffff;
+}
+
+.hierarchy-card-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8b5cf6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.hierarchy-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.hierarchy-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+}
+
+.hierarchy-card-action-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4f46e5;
+  background-color: transparent;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #4f46e5;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  width: 100%;
+}
+
+.hierarchy-item-card:hover .hierarchy-card-action-outline {
+  background-color: #ede9fe;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+/* Course List View Grid */
+.courses-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* ── Responsive: Tablet (2 cards per row) ── */
+@media (max-width: 1024px) {
+  .hierarchy-item-card {
+    flex: 1 1 calc(50% - 1rem);
+    min-width: calc(50% - 1rem);
+  }
+}
+
+/* ── Responsive: Mobile (1 card per row) ── */
+@media (max-width: 640px) {
+  .courses-header-section {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .courses-section-title {
+    font-size: 1.75rem;
+  }
+
+  .hierarchy-cards-grid {
+    flex-direction: column;
+  }
+
+  .hierarchy-item-card {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+}

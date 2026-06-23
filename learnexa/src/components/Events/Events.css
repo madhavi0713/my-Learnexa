@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ================= CONTAINER & TYPOGRAPHY SYSTEM ================= */
+.events-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 64px auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.03em;
+}
+
+.title::after {
+  content: "";
+  width: 48px;
+  height: 3.5px;
+  background: #7c3aed;
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 4px;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 15px;
+  color: #64748b;
+  margin-top: 40px;
+}
+
+/* ================= GRID CONTAINER LAYOUT ================= */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+/* ================= MODERNIZED EVENT CARDS ================= */
+.event-card {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: 
+    0 4px 6px -1px rgba(15, 23, 42, 0.02), 
+    0 12px 24px -4px rgba(15, 23, 42, 0.06);
+}
+
+.event-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background-color: #f1f5f9;
+  transition: transform 0.5s ease;
+}
+
+.event-card:hover img {
+  transform: scale(1.02);
+}
+
+/* CARD INTERNAL BODY CONTENT */
+.event-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* HIGH-END METADATA CATEGORY BADGES */
+.category {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+
+.category.it-badge {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.category.non-it-badge {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.event-content h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* META INFORMATION STRIPS (DATE / LOCATION) */
+.event-meta {
+  margin: 4px 0;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.event-description {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 16px 0 24px 0;
+  flex-grow: 1;
+  font-weight: 400;
+}
+
+/* PRIMARY CARD ACTION CONTROLS */
+.register-btn {
+  background-color: var(--bg-primary);
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  padding: 11px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  margin-top: auto;
+}
+
+.register-btn:hover {
+  background-color: #7c3aed;
+  color: #ffffff;
+  border-color: #7c3aed;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+}
+
+/* SECTIONS EXTENDED OVERFLOW BUTTONS */
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.view-more-btn {
+  background: var(--bg-primary);
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.view-more-btn:hover {
+  color: #7c3aed;
+  border-color: #a78bfa;
+  background: rgba(124, 58, 237, 0.02);
+  transform: translateY(-0.5px);
+}
+
+/* ================= PREMIUM GLASS FORM OVERLAY MODAL ================= */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.popup-form {
+  background: var(--bg-primary);
+  padding: 40px 32px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  border: 1px solid #e2e8f0;
+  box-shadow: 
+    0 4px 6px -1px rgba(15, 23, 42, 0.02),
+    0 20px 40px -8px rgba(15, 23, 42, 0.08);
+  animation: elegantSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes elegantSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.popup-form h2 {
+  margin: 0 0 24px 0;
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* ASYNC ACTIONS ACTION NOTIFICATION STATUS BARS */
+.form-msg {
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+.form-msg.error {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fee2e2;
+}
+
+.form-msg.success {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #dcfce7;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0f172a;
+  background-color: var(--bg-primary);
+  box-sizing: border-box;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:hover {
+  border-color: #94a3b8;
+}
+
+.form-group input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.08);
+}
+
+/* WINDOW MODAL CONTAINER ACTIONS SPLIT CONTROLS */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.submit-btn, .close-btn {
+  flex: 1;
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-btn {
+  background-color: #7c3aed;
+  color: #ffffff;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #6d28d9;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+}
+
+.submit-btn:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.close-btn {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  box-shadow: none;
+}
+
+.close-btn:hover:not(:disabled) {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+/* ================= RESPONSIVE SYSTEM MEDIA BREAKPOINTS ================= */
+@media (max-width: 768px) {
+  .events-container {
+    margin: 40px auto;
+  }
+  .title {
+    font-size: 26px;
+  }
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .popup-form {
+    width: 92%;
+    padding: 32px 20px;
+  }
+}

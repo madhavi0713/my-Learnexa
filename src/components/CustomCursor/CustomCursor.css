@@ -1,0 +1,53 @@
+/* ─────────────────────────────────────────────────────────────────
+   CustomCursor — Neon Canvas Cursor
+   All animation is handled on a <canvas> via requestAnimationFrame.
+   This file only handles:
+     1. Hiding the native browser cursor (pointer: fine devices only)
+     2. Positioning the canvas correctly
+──────────────────────────────────────────────────────────────────── */
+
+/* Hide default cursor on mouse devices */
+@media (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
+/* Full-viewport overlay canvas */
+#neon-cursor-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 2147483647; /* Max z-index — always on top */
+  will-change: transform;
+  /* GPU compositing layer */
+  transform: translateZ(0);
+  /* Never block interaction */
+  user-select: none;
+}
+
+/* ── Touch devices: never show canvas ─────────────────────────── */
+@media (pointer: coarse) {
+  #neon-cursor-canvas {
+    display: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
+  }
+}
+
+/* ── Reduced motion: hide particles/trail (handled in JS),
+      but still allow the static cursor to show ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  #neon-cursor-canvas {
+    /* Still shown but JS skips trail/particle drawing */
+    opacity: 1;
+  }
+}

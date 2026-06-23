@@ -1,0 +1,295 @@
+.tracks-page{
+
+    min-height:100vh;
+    background:#f8fafc;
+    padding:70px 9%;
+
+}
+
+
+
+/* TITLE */
+
+
+.tracks-heading{
+
+    text-align:center;
+
+    font-size:38px;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    margin-bottom:60px;
+
+    position:relative;
+
+}
+
+
+
+.tracks-heading::after{
+
+    content:"";
+
+    width:80px;
+
+    height:4px;
+
+    background:#7c3aed;
+
+    border-radius:20px;
+
+    position:absolute;
+
+    bottom:-15px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+
+
+
+
+
+/* GRID */
+
+
+.tracks-container{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(330px,1fr));
+
+    gap:45px;
+
+}
+
+
+
+
+
+
+
+/* CARD */
+
+
+.track-card{
+
+    background: var(--bg-primary);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 15px 35px rgba(15,23,42,.08);
+
+    transition:.35s ease;
+
+}
+
+
+
+.track-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 25px 55px rgba(15,23,42,.15);
+
+}
+
+
+
+
+
+
+/* IMAGE */
+
+
+.track-card img{
+
+    width:100%;
+
+    height:230px;
+
+    object-fit:cover;
+
+}
+
+
+
+
+
+
+
+/* CONTENT */
+
+
+.track-content{
+
+    padding:30px;
+
+}
+
+
+
+
+
+
+.track-content span{
+
+    font-size:13px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    color:#111827;
+
+}
+
+
+
+
+
+
+.track-content h2{
+
+    margin-top:18px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+}
+
+
+
+
+
+
+.track-content p{
+
+    margin-top:10px;
+
+    color:#64748b;
+
+    font-size:17px;
+
+    line-height:1.5;
+
+}
+
+
+
+
+
+
+
+/* BUTTON */
+
+
+.track-content button{
+
+    width:100%;
+
+    height:55px;
+
+    margin-top:30px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#7c3aed;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.track-content button:hover{
+
+    background:#6d28d9;
+
+    transform:scale(.98);
+
+}
+
+
+
+
+
+
+
+
+/* EMPTY TEXT */
+
+
+.tracks-container h2{
+
+    width:100%;
+
+    text-align:center;
+
+    color:#64748b;
+
+}
+
+
+
+
+
+
+
+
+/* MOBILE */
+
+
+@media(max-width:700px){
+
+
+    .tracks-page{
+
+        padding:40px 20px;
+
+    }
+
+
+
+    .tracks-heading{
+
+        font-size:30px;
+
+    }
+
+
+
+    .tracks-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+}

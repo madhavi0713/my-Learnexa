@@ -1,0 +1,109 @@
+.create-account-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-main);
+  padding: 40px;
+}
+  
+  /* FORM CARD */
+  
+  .create-account-form {
+  width: 450px;
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 45px 40px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  animation: popup 0.4s ease;
+}
+  
+  /* ANIMATION */
+  
+  @keyframes popup{
+  
+    from{
+      transform: translateY(20px);
+      opacity: 0;
+    }
+  
+    to{
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* TITLE */
+  
+  .create-account-form h1 {
+  text-align: center;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 35px;
+}
+  
+  /* INPUTS */
+  
+  .create-account-form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-main);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s;
+}
+  
+  .create-account-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.create-account-form input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
+}
+  
+  /* BUTTON */
+  
+  .create-account-form button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+  
+  .create-account-form button:hover{
+    transform: translateY(-3px);
+  }
+  
+  /* RESPONSIVE */
+  
+  @media(max-width:500px){
+  
+    .create-account-form{
+      width: 100%;
+      padding: 35px 25px;
+    }
+  
+    .create-account-form h1{
+      font-size: 32px;
+    }
+  }
