@@ -243,7 +243,9 @@ Built with dedication, creativity, and innovation.
 
 <h2 align="center">Developed By</h2>
 
-<h1 align="center">🚀 Perumalla Rohith 🚀</h1>
+<h1 align="center">🚀 Birre Madhavi🚀</h1>
+
+
 
 <p align="center">
 Full Stack Developer | AI & ML Enthusiast | UI/UX Designer
@@ -264,7 +266,7 @@ interactive, and user-friendly digital learning experience.
 </p>
 
 <p align="center">
-© 2026 LernX | Created by Perumalla Rohith
+© 2026 LernX | Created by Birre Madhavi
 </p>
 
 
