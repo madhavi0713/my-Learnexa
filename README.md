@@ -266,7 +266,7 @@ interactive, and user-friendly digital learning experience.
 </p>
 
 <p align="center">
-© 2026 LernX | Created by Birre Madhavi
+© 2026 LernX | Created by Birre Madhav
 </p>
 
 
